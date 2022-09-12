@@ -29,7 +29,7 @@ class LiveDataActivity : AppCompatActivity() {
         mylivedata.value = listOf("the first", "the second", "the third")
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        adapter = RecyclerViewAdapter2(this)
+        adapter = RecyclerViewAdapter2()
         binding.recyclerView.adapter = adapter
 
         binding.button.text = "Create data item"
@@ -49,10 +49,10 @@ class LiveDataActivity : AppCompatActivity() {
     }
 }
 
-class RecyclerViewAdapter2(private val context: Context): ListAdapter<String, ViewHolder2>(MyDiffCallback()) {
-    override fun onCreateViewHolder(vg: ViewGroup, vt: Int): ViewHolder2 {
+class RecyclerViewAdapter2: ListAdapter<String, ViewHolder2>(MyDiffCallback()) {
+    override fun onCreateViewHolder(parent: ViewGroup, vt: Int): ViewHolder2 {
         Log.d("ZZZ", "onCreateViewHolder()")
-        val itemView = LayoutInflater.from(context).inflate(R.layout.myitemlayout, vg, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.myitemlayout, parent, false)
         return ViewHolder2(itemView)
     }
 

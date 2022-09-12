@@ -24,8 +24,8 @@ class MainActivity : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        binding.recyclerView.layoutManager = GridLayoutManager(this, 2)
-        binding.recyclerView.adapter = MyRecyclerViewAdapter(this, mydata) // hook recyclerView with data
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)//GridLayoutManager(this, 2)
+        binding.recyclerView.adapter = MyRecyclerViewAdapter(mydata) // hook recyclerView with data
 
         binding.button.text = "to livedata example" // for moving to live data example
         binding.button.setOnClickListener {
@@ -35,12 +35,12 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-class MyRecyclerViewAdapter(private val context: Context, private val mydata: List<String>):
+class MyRecyclerViewAdapter(private val mydata: List<String>):
         RecyclerView.Adapter<MyViewHolder>() {
-    override fun onCreateViewHolder(vg: ViewGroup, vt: Int): MyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, vt: Int): MyViewHolder {
         Log.d("ZZZ", "onCreateViewHolder()")
         // inflate creates layout including the widget objects in the layout
-        val itemView = LayoutInflater.from(context).inflate(R.layout.myitemlayout, vg, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.myitemlayout, parent, false)
         return MyViewHolder(itemView)
     }
 
