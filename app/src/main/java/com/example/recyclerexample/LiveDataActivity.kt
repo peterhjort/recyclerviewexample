@@ -41,7 +41,7 @@ class LiveDataActivity : AppCompatActivity() {
         }
 
         mylivedata.observe(this, {
-            Log.d("ZZZ", "mylivedata.observe")
+            Log.d("XXX", "mylivedata.observe")
             it?.let {
                 adapter.submitList(it)
             }
@@ -51,13 +51,13 @@ class LiveDataActivity : AppCompatActivity() {
 
 class RecyclerViewAdapter2: ListAdapter<String, ViewHolder2>(MyDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, vt: Int): ViewHolder2 {
-        Log.d("ZZZ", "onCreateViewHolder()")
+        Log.d("XXX", "onCreateViewHolder()")
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.myitemlayout, parent, false)
         return ViewHolder2(itemView)
     }
 
     override fun onBindViewHolder(vh: ViewHolder2, pos: Int) {
-        Log.d("ZZZ", "onBindViewHolder($pos)")
+        Log.d("XXX", "onBindViewHolder($pos)")
         vh.itemView.findViewById<TextView>(R.id.textView2).text = getItem(pos)
     }
 
